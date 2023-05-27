@@ -1,7 +1,7 @@
 from tests import *
 from tests.helpers import *
 from tests.fixtures import *
-from app import *
+from contracts.app import *
 import base64
 from Crypto.Util import number
 from math import floor

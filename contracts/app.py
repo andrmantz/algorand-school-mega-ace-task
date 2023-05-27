@@ -1,7 +1,7 @@
 from pyteal import *
 from beaker import *
-from helpers.checks import *
-from helpers.inners import *
+from contracts.helpers.checks import *
+from contracts.helpers.inners import *
 
 class loanStruct(abi.NamedTuple):
     collateral_id: abi.Field[abi.Uint64]

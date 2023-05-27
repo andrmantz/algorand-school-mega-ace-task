@@ -1,6 +1,6 @@
 from tests import *
 from tests.helpers import *
-from app import *
+from contracts.app import *
 
 @pytest.fixture(scope="function")
 def nft_as_collateral_app_id(algod_client: AlgodClient):
