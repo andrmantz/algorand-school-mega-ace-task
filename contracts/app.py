@@ -36,9 +36,6 @@ def opt_into_nft(asset: abi.Asset) -> Expr:
 @app.external
 def request_loan(borrowing_id: abi.Uint64, amount_: abi.Uint64, duration_: abi.Uint64, interest_: abi.Uint64, axfer: abi.AssetTransferTransaction, paytx: abi.PaymentTransaction) -> Expr:
     return Seq(
-        # loanStruct size = 112
-        # key size = 8
-        # MBR = 2500 + 400 * 120
         Assert(axfer.get().asset_receiver() == Global.current_application_address()),
         Assert(axfer.get().asset_amount() == Int(1)),
         Assert(axfer.get().sender() ==Txn.sender()),
@@ -335,6 +332,7 @@ def propose_native_interest(loan_id: abi.Uint64, proposed_interest: abi.Uint64, 
         )
         
 # Proposer can revoke his proposal and get his funds back
+# Owner of the request can use this function to decline a proposal too
 @app.external
 def revoke_proposal(loan_id: abi.Uint64) -> Expr:
         return Seq(
