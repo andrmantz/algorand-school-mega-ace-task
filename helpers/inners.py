@@ -27,3 +27,13 @@ def send_opt_in_transaction(asa_id: Expr):
             }
         )
     )
+
+def pay(receiver: Expr, amount: Expr) -> Expr:
+    return InnerTxnBuilder.Execute(
+        {
+            TxnField.type_enum: TxnType.Payment,
+            TxnField.receiver: receiver,
+            TxnField.amount: amount,
+            TxnField.fee: Int(0),
+        }
+    )

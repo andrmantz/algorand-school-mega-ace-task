@@ -2,7 +2,7 @@ from tests import *
 from algosdk.account import generate_account
 
 
-def generate_funded_account(algod_client: AlgodClient, amt=10_000_000):
+def generate_funded_account(algod_client: AlgodClient, amt=50_000_000):
     sandbox_faucet = sandbox.get_accounts().pop()
     private_key, address = generate_account()
     txn = PaymentTxn(sandbox_faucet.address, algod_client.suggested_params(), address, amt)
